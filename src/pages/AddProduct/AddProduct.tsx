@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function AddProduct(props) {    
+export default function AddProduct(props:any) {    
     const [newProduct, setNewProduct] = useState({id:0,title:'',thumbnail:'',price:'',description:'',category:''});
     const navigate=useNavigate();
-    const OnChangeInput = input => {
+    const OnChangeInput = (input:any) => {
         const { name, value } = input.target;
         setNewProduct({ ...newProduct, [name]: value });
       };
@@ -40,7 +40,7 @@ export default function AddProduct(props) {
         </div>
     
       <div > 
-        <button type="button" className="btn btn-primary" onClick={()=>AddProduct(newProduct)}>
+        <button type="button" className="btn btn-primary" onClick={()=>AddProduct()}>
           Ekle
         </button>
         </div>

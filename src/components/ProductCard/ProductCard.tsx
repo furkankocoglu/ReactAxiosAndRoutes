@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function ProductCard(props) {	
+export default function ProductCard(props:any) {	
 	return (
 		<div className="card">
 			<img src={props.product.thumbnail} className="card-img-top" alt="..." />
