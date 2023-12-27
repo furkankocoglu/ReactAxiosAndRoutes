@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import { useEffect, useState } from 'react'
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
+import ProductService from '../../Services/ProductService';
+import { ProductModel } from '../../components/Models/ProductModel';
 
-function GetPageId():string|null{
-    return new URLSearchParams(window.location.search).get("id");
+function GetPageId():number{
+  let pageId=new URLSearchParams(window.location.search).get("id");  
+    return parseInt(pageId?pageId:"-1");
 }
 
 
 export default function ProductDetailPage() {    
-    const [product,setProduct]=useState({});
+    const [product,setProduct]=useState<ProductModel>();
     useEffect(() => {
         GetProduct(GetPageId());
     }, [])    
-    const GetProduct= async (id:string|null)=>{
-        let result =  await axios.get("https://dummyjson.com/products/"+id)
+    const GetProduct= async (id:number)=>{
+        let result =  await ProductService.getById(id);
         let product = await result.data;
-        console.log(product);
         setProduct(product);
-        return product;
     }
   return (      
     <>    
-    {Object.values(product).length!=0?<ProductDetail product={product} />:null}
+    {product?<ProductDetail product={product} />:null}
     </>
   )
 }

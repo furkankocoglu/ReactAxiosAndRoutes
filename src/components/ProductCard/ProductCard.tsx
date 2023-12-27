@@ -1,7 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
-export default function ProductCard(props:any) {	
+import { ProductModel } from "../Models/ProductModel";
+type Props={
+	product:ProductModel;
+	delete:(id:number)=>void;
+}
+export default function ProductCard(props:Props) {	
 	return (
 		<div className="card">
 			<img src={props.product.thumbnail} className="card-img-top" alt="..." />

@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from "react";
-export default function ProductDetail(props:any) {
+import { ProductModel } from "../Models/ProductModel";
+
+type Props={
+  product:ProductModel;
+}
+
+export default function ProductDetail(props:Props) {
   return (
-    /*    
+    /*  
+    {  
   "id": 1,
   "title": "iPhone 9",
   "description": "An apple mobile which is nothing like apple",

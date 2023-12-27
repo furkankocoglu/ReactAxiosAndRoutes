@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function AddProduct(props:any) {    
+export default function AddProduct() {    
     const [newProduct, setNewProduct] = useState({id:0,title:'',thumbnail:'',price:'',description:'',category:''});
     const navigate=useNavigate();
     const OnChangeInput = (input:any) => {
